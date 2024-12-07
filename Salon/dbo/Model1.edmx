@@ -1,0 +1,1107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище parikmaherModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Akcii">
+          <Key>
+            <PropertyRef Name="Id_Akcii" />
+          </Key>
+          <Property Name="Id_Akcii" Type="int" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Data" Type="date" />
+        </EntityType>
+        <EntityType Name="ClientPreferences">
+          <Key>
+            <PropertyRef Name="Id_ClientPreferences" />
+          </Key>
+          <Property Name="Id_ClientPreferences" Type="int" Nullable="false" />
+          <Property Name="Id_Klient" Type="int" />
+          <Property Name="ClientPreferences" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Kategorii_Uslug">
+          <Key>
+            <PropertyRef Name="Id_Uslugi" />
+          </Key>
+          <Property Name="Id_Uslugi" Type="int" Nullable="false" />
+          <Property Name="Naimenovanie" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id_Klient" />
+          </Key>
+          <Property Name="Id_Klient" Type="int" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="Id_Mastera" />
+          </Key>
+          <Property Name="Id_Mastera" Type="int" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecNazv" Type="nvarchar" MaxLength="50" />
+          <Property Name="Reyting" Type="int" />
+          <Property Name="Opit" Type="int" />
+          <Property Name="Skills" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_Uslugi" Type="int" />
+        </EntityType>
+        <EntityType Name="Materiali">
+          <Key>
+            <PropertyRef Name="Id_Materiala" />
+          </Key>
+          <Property Name="Id_Materiala" Type="int" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kolichestvo" Type="int" />
+          <Property Name="Id_Uslugi" Type="int" />
+          <Property Name="Srok_godnosti" Type="date" />
+          <Property Name="Id_Uvedi" Type="int" />
+        </EntityType>
+        <EntityType Name="Messages_Akcii">
+          <Key>
+            <PropertyRef Name="Id_Messages" />
+          </Key>
+          <Property Name="Id_Messages" Type="int" Nullable="false" />
+          <Property Name="Id_Klienta" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SentDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Naviki">
+          <Key>
+            <PropertyRef Name="Id_Navika" />
+          </Key>
+          <Property Name="Id_Navika" Type="int" Nullable="false" />
+          <Property Name="Id_Sotrudnika" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Otzivi">
+          <Key>
+            <PropertyRef Name="Id_Klienta" />
+          </Key>
+          <Property Name="Id_Klienta" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Prodaji">
+          <Key>
+            <PropertyRef Name="Id_Prodaji" />
+          </Key>
+          <Property Name="Id_Prodaji" Type="int" Nullable="false" />
+          <Property Name="Id_Klienta" Type="int" />
+          <Property Name="Id_Uslugi" Type="int" />
+          <Property Name="Data" Type="date" />
+          <Property Name="Summa" Type="int" />
+        </EntityType>
+        <EntityType Name="Rashodi_Materialov">
+          <Key>
+            <PropertyRef Name="Id_Rashodi_Materialov" />
+          </Key>
+          <Property Name="Id_Rashodi_Materialov" Type="int" Nullable="false" />
+          <Property Name="Id_Zapisi" Type="int" />
+          <Property Name="Id_Materiala" Type="int" />
+          <Property Name="Kolvo_Used" Type="int" />
+        </EntityType>
+        <EntityType Name="Raspisanie">
+          <Key>
+            <PropertyRef Name="Id_Raspisanie" />
+          </Key>
+          <Property Name="Id_Raspisanie" Type="int" Nullable="false" />
+          <Property Name="Id_Mastera" Type="int" />
+          <Property Name="Rab_chasi" Type="int" />
+          <Property Name="Perev" Type="int" />
+        </EntityType>
+        <EntityType Name="Specializacii">
+          <Key>
+            <PropertyRef Name="Id_Specializacii" />
+          </Key>
+          <Property Name="Id_Specializacii" Type="int" Nullable="false" />
+          <Property Name="Naimenovanie" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="Id_Uslugi" />
+          </Key>
+          <Property Name="Id_Uslugi" Type="int" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kategoriya" Type="int" />
+          <Property Name="Stoimost" Type="int" />
+          <Property Name="Opisanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dlitelnost_chasov" Type="int" />
+        </EntityType>
+        <EntityType Name="Uvedi">
+          <Key>
+            <PropertyRef Name="Id_Uvedi" />
+          </Key>
+          <Property Name="Id_Uvedi" Type="int" Nullable="false" />
+          <Property Name="Id_Klienta" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Vipoln_Usligi">
+          <Key>
+            <PropertyRef Name="Id_Vipoln_Usligi" />
+          </Key>
+          <Property Name="Id_Vipoln_Usligi" Type="int" Nullable="false" />
+          <Property Name="Id_Klient" Type="int" />
+          <Property Name="Id_Uslugi" Type="int" />
+          <Property Name="Дата_Выполнения" Type="date" />
+          <Property Name="Сумма" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Zapisi">
+          <Key>
+            <PropertyRef Name="Id_Zapisi" />
+          </Key>
+          <Property Name="Id_Zapisi" Type="int" Nullable="false" />
+          <Property Name="Id_Sotrudnika" Type="nchar" MaxLength="10" />
+          <Property Name="Data" Type="date" />
+          <Property Name="Id_Uslugi" Type="int" />
+        </EntityType>
+        <EntityType Name="Zarplati">
+          <Key>
+            <PropertyRef Name="Id_Zarp" />
+          </Key>
+          <Property Name="Id_Zarp" Type="int" Nullable="false" />
+          <Property Name="Id_Sotrudnika" Type="int" />
+          <Property Name="Zarplata" Type="int" />
+          <Property Name="Bonus" Type="int" />
+          <Property Name="Zarplata_Month" Type="int" />
+          <Property Name="Zarplata_Year" Type="int" />
+        </EntityType>
+        <Association Name="FK__ClientPre__Id_Kl__45BE5BA9">
+          <End Role="Otzivi" Type="Self.Otzivi" Multiplicity="0..1" />
+          <End Role="ClientPreferences" Type="Self.ClientPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otzivi">
+              <PropertyRef Name="Id_Klienta" />
+            </Principal>
+            <Dependent Role="ClientPreferences">
+              <PropertyRef Name="Id_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Master__Id_Uslug__3E1D39E1">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Master" Type="Self.Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Master">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materiali__Id_Us__40058253">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Materiali">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materiali__Id_Uv__40F9A68C">
+          <End Role="Uvedi" Type="Self.Uvedi" Multiplicity="0..1" />
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uvedi">
+              <PropertyRef Name="Id_Uvedi" />
+            </Principal>
+            <Dependent Role="Materiali">
+              <PropertyRef Name="Id_Uvedi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages___Id_Kl__44CA3770">
+          <End Role="Otzivi" Type="Self.Otzivi" Multiplicity="0..1" />
+          <End Role="Messages_Akcii" Type="Self.Messages_Akcii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otzivi">
+              <PropertyRef Name="Id_Klienta" />
+            </Principal>
+            <Dependent Role="Messages_Akcii">
+              <PropertyRef Name="Id_Klienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prodaji__Id_Klie__3B40CD36">
+          <End Role="Otzivi" Type="Self.Otzivi" Multiplicity="0..1" />
+          <End Role="Prodaji" Type="Self.Prodaji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otzivi">
+              <PropertyRef Name="Id_Klienta" />
+            </Principal>
+            <Dependent Role="Prodaji">
+              <PropertyRef Name="Id_Klienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prodaji__Id_Uslu__3C34F16F">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Prodaji" Type="Self.Prodaji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Prodaji">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rashodi_M__Id_Ma__43D61337">
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="0..1" />
+          <End Role="Rashodi_Materialov" Type="Self.Rashodi_Materialov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materiali">
+              <PropertyRef Name="Id_Materiala" />
+            </Principal>
+            <Dependent Role="Rashodi_Materialov">
+              <PropertyRef Name="Id_Materiala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rashodi_M__Id_Za__42E1EEFE">
+          <End Role="Zapisi" Type="Self.Zapisi" Multiplicity="0..1" />
+          <End Role="Rashodi_Materialov" Type="Self.Rashodi_Materialov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zapisi">
+              <PropertyRef Name="Id_Zapisi" />
+            </Principal>
+            <Dependent Role="Rashodi_Materialov">
+              <PropertyRef Name="Id_Zapisi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Raspisani__Id_Ma__3F115E1A">
+          <End Role="Master" Type="Self.Master" Multiplicity="0..1" />
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Master">
+              <PropertyRef Name="Id_Mastera" />
+            </Principal>
+            <Dependent Role="Raspisanie">
+              <PropertyRef Name="Id_Mastera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uslugi__Kategori__41EDCAC5">
+          <End Role="Kategorii_Uslug" Type="Self.Kategorii_Uslug" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorii_Uslug">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="Kategoriya" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vipoln_Us__Id_Kl__46B27FE2">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="Vipoln_Usligi" Type="Self.Vipoln_Usligi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="Id_Klient" />
+            </Principal>
+            <Dependent Role="Vipoln_Usligi">
+              <PropertyRef Name="Id_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vipoln_Us__Id_Us__47A6A41B">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Vipoln_Usligi" Type="Self.Vipoln_Usligi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Vipoln_Usligi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zapisi__Id_Uslug__3D2915A8">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Zapisi" Type="Self.Zapisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Zapisi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище parikmaherModelContainer">
+          <EntitySet Name="Akcii" EntityType="Self.Akcii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientPreferences" EntityType="Self.ClientPreferences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorii_Uslug" EntityType="Self.Kategorii_Uslug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master" EntityType="Self.Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materiali" EntityType="Self.Materiali" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages_Akcii" EntityType="Self.Messages_Akcii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Naviki" EntityType="Self.Naviki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Otzivi" EntityType="Self.Otzivi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prodaji" EntityType="Self.Prodaji" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rashodi_Materialov" EntityType="Self.Rashodi_Materialov" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Raspisanie" EntityType="Self.Raspisanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specializacii" EntityType="Self.Specializacii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uvedi" EntityType="Self.Uvedi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vipoln_Usligi" EntityType="Self.Vipoln_Usligi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zapisi" EntityType="Self.Zapisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zarplati" EntityType="Self.Zarplati" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ClientPre__Id_Kl__45BE5BA9" Association="Self.FK__ClientPre__Id_Kl__45BE5BA9">
+            <End Role="Otzivi" EntitySet="Otzivi" />
+            <End Role="ClientPreferences" EntitySet="ClientPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Master__Id_Uslug__3E1D39E1" Association="Self.FK__Master__Id_Uslug__3E1D39E1">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Master" EntitySet="Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materiali__Id_Us__40058253" Association="Self.FK__Materiali__Id_Us__40058253">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Materiali" EntitySet="Materiali" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materiali__Id_Uv__40F9A68C" Association="Self.FK__Materiali__Id_Uv__40F9A68C">
+            <End Role="Uvedi" EntitySet="Uvedi" />
+            <End Role="Materiali" EntitySet="Materiali" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages___Id_Kl__44CA3770" Association="Self.FK__Messages___Id_Kl__44CA3770">
+            <End Role="Otzivi" EntitySet="Otzivi" />
+            <End Role="Messages_Akcii" EntitySet="Messages_Akcii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prodaji__Id_Klie__3B40CD36" Association="Self.FK__Prodaji__Id_Klie__3B40CD36">
+            <End Role="Otzivi" EntitySet="Otzivi" />
+            <End Role="Prodaji" EntitySet="Prodaji" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prodaji__Id_Uslu__3C34F16F" Association="Self.FK__Prodaji__Id_Uslu__3C34F16F">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Prodaji" EntitySet="Prodaji" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rashodi_M__Id_Ma__43D61337" Association="Self.FK__Rashodi_M__Id_Ma__43D61337">
+            <End Role="Materiali" EntitySet="Materiali" />
+            <End Role="Rashodi_Materialov" EntitySet="Rashodi_Materialov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rashodi_M__Id_Za__42E1EEFE" Association="Self.FK__Rashodi_M__Id_Za__42E1EEFE">
+            <End Role="Zapisi" EntitySet="Zapisi" />
+            <End Role="Rashodi_Materialov" EntitySet="Rashodi_Materialov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Raspisani__Id_Ma__3F115E1A" Association="Self.FK__Raspisani__Id_Ma__3F115E1A">
+            <End Role="Master" EntitySet="Master" />
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uslugi__Kategori__41EDCAC5" Association="Self.FK__Uslugi__Kategori__41EDCAC5">
+            <End Role="Kategorii_Uslug" EntitySet="Kategorii_Uslug" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vipoln_Us__Id_Kl__46B27FE2" Association="Self.FK__Vipoln_Us__Id_Kl__46B27FE2">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Vipoln_Usligi" EntitySet="Vipoln_Usligi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vipoln_Us__Id_Us__47A6A41B" Association="Self.FK__Vipoln_Us__Id_Us__47A6A41B">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Vipoln_Usligi" EntitySet="Vipoln_Usligi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zapisi__Id_Uslug__3D2915A8" Association="Self.FK__Zapisi__Id_Uslug__3D2915A8">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Zapisi" EntitySet="Zapisi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="parikmaherModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Akcii">
+          <Key>
+            <PropertyRef Name="Id_Akcii" />
+          </Key>
+          <Property Name="Id_Akcii" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ClientPreferences">
+          <Key>
+            <PropertyRef Name="Id_ClientPreferences" />
+          </Key>
+          <Property Name="Id_ClientPreferences" Type="Int32" Nullable="false" />
+          <Property Name="Id_Klient" Type="Int32" />
+          <Property Name="ClientPreferences1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Otzivi" Relationship="Self.FK__ClientPre__Id_Kl__45BE5BA9" FromRole="ClientPreferences" ToRole="Otzivi" />
+        </EntityType>
+        <EntityType Name="Kategorii_Uslug">
+          <Key>
+            <PropertyRef Name="Id_Uslugi" />
+          </Key>
+          <Property Name="Id_Uslugi" Type="Int32" Nullable="false" />
+          <Property Name="Naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Uslugi__Kategori__41EDCAC5" FromRole="Kategorii_Uslug" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id_Klient" />
+          </Key>
+          <Property Name="Id_Klient" Type="Int32" Nullable="false" />
+          <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vipoln_Usligi" Relationship="Self.FK__Vipoln_Us__Id_Kl__46B27FE2" FromRole="Klient" ToRole="Vipoln_Usligi" />
+        </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="Id_Mastera" />
+          </Key>
+          <Property Name="Id_Mastera" Type="Int32" Nullable="false" />
+          <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecNazv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Reyting" Type="Int32" />
+          <Property Name="Opit" Type="Int32" />
+          <Property Name="Skills" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Uslugi" Type="Int32" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Master__Id_Uslug__3E1D39E1" FromRole="Master" ToRole="Uslugi" />
+          <NavigationProperty Name="Raspisanie" Relationship="Self.FK__Raspisani__Id_Ma__3F115E1A" FromRole="Master" ToRole="Raspisanie" />
+        </EntityType>
+        <EntityType Name="Materiali">
+          <Key>
+            <PropertyRef Name="Id_Materiala" />
+          </Key>
+          <Property Name="Id_Materiala" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kolichestvo" Type="Int32" />
+          <Property Name="Id_Uslugi" Type="Int32" />
+          <Property Name="Srok_godnosti" Type="DateTime" Precision="0" />
+          <Property Name="Id_Uvedi" Type="Int32" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Materiali__Id_Us__40058253" FromRole="Materiali" ToRole="Uslugi" />
+          <NavigationProperty Name="Uvedi" Relationship="Self.FK__Materiali__Id_Uv__40F9A68C" FromRole="Materiali" ToRole="Uvedi" />
+          <NavigationProperty Name="Rashodi_Materialov" Relationship="Self.FK__Rashodi_M__Id_Ma__43D61337" FromRole="Materiali" ToRole="Rashodi_Materialov" />
+        </EntityType>
+        <EntityType Name="Messages_Akcii">
+          <Key>
+            <PropertyRef Name="Id_Messages" />
+          </Key>
+          <Property Name="Id_Messages" Type="Int32" Nullable="false" />
+          <Property Name="Id_Klienta" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SentDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Otzivi" Relationship="Self.FK__Messages___Id_Kl__44CA3770" FromRole="Messages_Akcii" ToRole="Otzivi" />
+        </EntityType>
+        <EntityType Name="Naviki">
+          <Key>
+            <PropertyRef Name="Id_Navika" />
+          </Key>
+          <Property Name="Id_Navika" Type="Int32" Nullable="false" />
+          <Property Name="Id_Sotrudnika" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Otzivi">
+          <Key>
+            <PropertyRef Name="Id_Klienta" />
+          </Key>
+          <Property Name="Id_Klienta" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientPreferences" Relationship="Self.FK__ClientPre__Id_Kl__45BE5BA9" FromRole="Otzivi" ToRole="ClientPreferences" />
+          <NavigationProperty Name="Messages_Akcii" Relationship="Self.FK__Messages___Id_Kl__44CA3770" FromRole="Otzivi" ToRole="Messages_Akcii" />
+          <NavigationProperty Name="Prodaji" Relationship="Self.FK__Prodaji__Id_Klie__3B40CD36" FromRole="Otzivi" ToRole="Prodaji" />
+        </EntityType>
+        <EntityType Name="Prodaji">
+          <Key>
+            <PropertyRef Name="Id_Prodaji" />
+          </Key>
+          <Property Name="Id_Prodaji" Type="Int32" Nullable="false" />
+          <Property Name="Id_Klienta" Type="Int32" />
+          <Property Name="Id_Uslugi" Type="Int32" />
+          <Property Name="Data" Type="DateTime" Precision="0" />
+          <Property Name="Summa" Type="Int32" />
+          <NavigationProperty Name="Otzivi" Relationship="Self.FK__Prodaji__Id_Klie__3B40CD36" FromRole="Prodaji" ToRole="Otzivi" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Prodaji__Id_Uslu__3C34F16F" FromRole="Prodaji" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="Rashodi_Materialov">
+          <Key>
+            <PropertyRef Name="Id_Rashodi_Materialov" />
+          </Key>
+          <Property Name="Id_Rashodi_Materialov" Type="Int32" Nullable="false" />
+          <Property Name="Id_Zapisi" Type="Int32" />
+          <Property Name="Id_Materiala" Type="Int32" />
+          <Property Name="Kolvo_Used" Type="Int32" />
+          <NavigationProperty Name="Materiali" Relationship="Self.FK__Rashodi_M__Id_Ma__43D61337" FromRole="Rashodi_Materialov" ToRole="Materiali" />
+          <NavigationProperty Name="Zapisi" Relationship="Self.FK__Rashodi_M__Id_Za__42E1EEFE" FromRole="Rashodi_Materialov" ToRole="Zapisi" />
+        </EntityType>
+        <EntityType Name="Raspisanie">
+          <Key>
+            <PropertyRef Name="Id_Raspisanie" />
+          </Key>
+          <Property Name="Id_Raspisanie" Type="Int32" Nullable="false" />
+          <Property Name="Id_Mastera" Type="Int32" />
+          <Property Name="Rab_chasi" Type="Int32" />
+          <Property Name="Perev" Type="Int32" />
+          <NavigationProperty Name="Master" Relationship="Self.FK__Raspisani__Id_Ma__3F115E1A" FromRole="Raspisanie" ToRole="Master" />
+        </EntityType>
+        <EntityType Name="Specializacii">
+          <Key>
+            <PropertyRef Name="Id_Specializacii" />
+          </Key>
+          <Property Name="Id_Specializacii" Type="Int32" Nullable="false" />
+          <Property Name="Naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="Id_Uslugi" />
+          </Key>
+          <Property Name="Id_Uslugi" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kategoriya" Type="Int32" />
+          <Property Name="Stoimost" Type="Int32" />
+          <Property Name="Opisanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dlitelnost_chasov" Type="Int32" />
+          <NavigationProperty Name="Kategorii_Uslug" Relationship="Self.FK__Uslugi__Kategori__41EDCAC5" FromRole="Uslugi" ToRole="Kategorii_Uslug" />
+          <NavigationProperty Name="Master" Relationship="Self.FK__Master__Id_Uslug__3E1D39E1" FromRole="Uslugi" ToRole="Master" />
+          <NavigationProperty Name="Materiali" Relationship="Self.FK__Materiali__Id_Us__40058253" FromRole="Uslugi" ToRole="Materiali" />
+          <NavigationProperty Name="Prodaji" Relationship="Self.FK__Prodaji__Id_Uslu__3C34F16F" FromRole="Uslugi" ToRole="Prodaji" />
+          <NavigationProperty Name="Vipoln_Usligi" Relationship="Self.FK__Vipoln_Us__Id_Us__47A6A41B" FromRole="Uslugi" ToRole="Vipoln_Usligi" />
+          <NavigationProperty Name="Zapisi" Relationship="Self.FK__Zapisi__Id_Uslug__3D2915A8" FromRole="Uslugi" ToRole="Zapisi" />
+        </EntityType>
+        <EntityType Name="Uvedi">
+          <Key>
+            <PropertyRef Name="Id_Uvedi" />
+          </Key>
+          <Property Name="Id_Uvedi" Type="Int32" Nullable="false" />
+          <Property Name="Id_Klienta" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materiali" Relationship="Self.FK__Materiali__Id_Uv__40F9A68C" FromRole="Uvedi" ToRole="Materiali" />
+        </EntityType>
+        <EntityType Name="Vipoln_Usligi">
+          <Key>
+            <PropertyRef Name="Id_Vipoln_Usligi" />
+          </Key>
+          <Property Name="Id_Vipoln_Usligi" Type="Int32" Nullable="false" />
+          <Property Name="Id_Klient" Type="Int32" />
+          <Property Name="Id_Uslugi" Type="Int32" />
+          <Property Name="Дата_Выполнения" Type="DateTime" Precision="0" />
+          <Property Name="Сумма" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK__Vipoln_Us__Id_Kl__46B27FE2" FromRole="Vipoln_Usligi" ToRole="Klient" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Vipoln_Us__Id_Us__47A6A41B" FromRole="Vipoln_Usligi" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="Zapisi">
+          <Key>
+            <PropertyRef Name="Id_Zapisi" />
+          </Key>
+          <Property Name="Id_Zapisi" Type="Int32" Nullable="false" />
+          <Property Name="Id_Sotrudnika" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Precision="0" />
+          <Property Name="Id_Uslugi" Type="Int32" />
+          <NavigationProperty Name="Rashodi_Materialov" Relationship="Self.FK__Rashodi_M__Id_Za__42E1EEFE" FromRole="Zapisi" ToRole="Rashodi_Materialov" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Zapisi__Id_Uslug__3D2915A8" FromRole="Zapisi" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="Zarplati">
+          <Key>
+            <PropertyRef Name="Id_Zarp" />
+          </Key>
+          <Property Name="Id_Zarp" Type="Int32" Nullable="false" />
+          <Property Name="Id_Sotrudnika" Type="Int32" />
+          <Property Name="Zarplata" Type="Int32" />
+          <Property Name="Bonus" Type="Int32" />
+          <Property Name="Zarplata_Month" Type="Int32" />
+          <Property Name="Zarplata_Year" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__ClientPre__Id_Kl__45BE5BA9">
+          <End Role="Otzivi" Type="Self.Otzivi" Multiplicity="0..1" />
+          <End Role="ClientPreferences" Type="Self.ClientPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otzivi">
+              <PropertyRef Name="Id_Klienta" />
+            </Principal>
+            <Dependent Role="ClientPreferences">
+              <PropertyRef Name="Id_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uslugi__Kategori__41EDCAC5">
+          <End Role="Kategorii_Uslug" Type="Self.Kategorii_Uslug" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorii_Uslug">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="Kategoriya" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vipoln_Us__Id_Kl__46B27FE2">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="Vipoln_Usligi" Type="Self.Vipoln_Usligi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="Id_Klient" />
+            </Principal>
+            <Dependent Role="Vipoln_Usligi">
+              <PropertyRef Name="Id_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Master__Id_Uslug__3E1D39E1">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Master" Type="Self.Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Master">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Raspisani__Id_Ma__3F115E1A">
+          <End Role="Master" Type="Self.Master" Multiplicity="0..1" />
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Master">
+              <PropertyRef Name="Id_Mastera" />
+            </Principal>
+            <Dependent Role="Raspisanie">
+              <PropertyRef Name="Id_Mastera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materiali__Id_Us__40058253">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Materiali">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materiali__Id_Uv__40F9A68C">
+          <End Role="Uvedi" Type="Self.Uvedi" Multiplicity="0..1" />
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uvedi">
+              <PropertyRef Name="Id_Uvedi" />
+            </Principal>
+            <Dependent Role="Materiali">
+              <PropertyRef Name="Id_Uvedi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rashodi_M__Id_Ma__43D61337">
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="0..1" />
+          <End Role="Rashodi_Materialov" Type="Self.Rashodi_Materialov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materiali">
+              <PropertyRef Name="Id_Materiala" />
+            </Principal>
+            <Dependent Role="Rashodi_Materialov">
+              <PropertyRef Name="Id_Materiala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages___Id_Kl__44CA3770">
+          <End Role="Otzivi" Type="Self.Otzivi" Multiplicity="0..1" />
+          <End Role="Messages_Akcii" Type="Self.Messages_Akcii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otzivi">
+              <PropertyRef Name="Id_Klienta" />
+            </Principal>
+            <Dependent Role="Messages_Akcii">
+              <PropertyRef Name="Id_Klienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prodaji__Id_Klie__3B40CD36">
+          <End Role="Otzivi" Type="Self.Otzivi" Multiplicity="0..1" />
+          <End Role="Prodaji" Type="Self.Prodaji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otzivi">
+              <PropertyRef Name="Id_Klienta" />
+            </Principal>
+            <Dependent Role="Prodaji">
+              <PropertyRef Name="Id_Klienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prodaji__Id_Uslu__3C34F16F">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Prodaji" Type="Self.Prodaji" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Prodaji">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rashodi_M__Id_Za__42E1EEFE">
+          <End Role="Zapisi" Type="Self.Zapisi" Multiplicity="0..1" />
+          <End Role="Rashodi_Materialov" Type="Self.Rashodi_Materialov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zapisi">
+              <PropertyRef Name="Id_Zapisi" />
+            </Principal>
+            <Dependent Role="Rashodi_Materialov">
+              <PropertyRef Name="Id_Zapisi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vipoln_Us__Id_Us__47A6A41B">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Vipoln_Usligi" Type="Self.Vipoln_Usligi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Vipoln_Usligi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zapisi__Id_Uslug__3D2915A8">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Zapisi" Type="Self.Zapisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Principal>
+            <Dependent Role="Zapisi">
+              <PropertyRef Name="Id_Uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="parikmaherEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Akcii" EntityType="Self.Akcii" />
+          <EntitySet Name="ClientPreferences" EntityType="Self.ClientPreferences" />
+          <EntitySet Name="Kategorii_Uslug" EntityType="Self.Kategorii_Uslug" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" />
+          <EntitySet Name="Master" EntityType="Self.Master" />
+          <EntitySet Name="Materiali" EntityType="Self.Materiali" />
+          <EntitySet Name="Messages_Akcii" EntityType="Self.Messages_Akcii" />
+          <EntitySet Name="Naviki" EntityType="Self.Naviki" />
+          <EntitySet Name="Otzivi" EntityType="Self.Otzivi" />
+          <EntitySet Name="Prodaji" EntityType="Self.Prodaji" />
+          <EntitySet Name="Rashodi_Materialov" EntityType="Self.Rashodi_Materialov" />
+          <EntitySet Name="Raspisanie" EntityType="Self.Raspisanie" />
+          <EntitySet Name="Specializacii" EntityType="Self.Specializacii" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+          <EntitySet Name="Uvedi" EntityType="Self.Uvedi" />
+          <EntitySet Name="Vipoln_Usligi" EntityType="Self.Vipoln_Usligi" />
+          <EntitySet Name="Zapisi" EntityType="Self.Zapisi" />
+          <EntitySet Name="Zarplati" EntityType="Self.Zarplati" />
+          <AssociationSet Name="FK__ClientPre__Id_Kl__45BE5BA9" Association="Self.FK__ClientPre__Id_Kl__45BE5BA9">
+            <End Role="Otzivi" EntitySet="Otzivi" />
+            <End Role="ClientPreferences" EntitySet="ClientPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uslugi__Kategori__41EDCAC5" Association="Self.FK__Uslugi__Kategori__41EDCAC5">
+            <End Role="Kategorii_Uslug" EntitySet="Kategorii_Uslug" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vipoln_Us__Id_Kl__46B27FE2" Association="Self.FK__Vipoln_Us__Id_Kl__46B27FE2">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Vipoln_Usligi" EntitySet="Vipoln_Usligi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Master__Id_Uslug__3E1D39E1" Association="Self.FK__Master__Id_Uslug__3E1D39E1">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Master" EntitySet="Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Raspisani__Id_Ma__3F115E1A" Association="Self.FK__Raspisani__Id_Ma__3F115E1A">
+            <End Role="Master" EntitySet="Master" />
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materiali__Id_Us__40058253" Association="Self.FK__Materiali__Id_Us__40058253">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Materiali" EntitySet="Materiali" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materiali__Id_Uv__40F9A68C" Association="Self.FK__Materiali__Id_Uv__40F9A68C">
+            <End Role="Uvedi" EntitySet="Uvedi" />
+            <End Role="Materiali" EntitySet="Materiali" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rashodi_M__Id_Ma__43D61337" Association="Self.FK__Rashodi_M__Id_Ma__43D61337">
+            <End Role="Materiali" EntitySet="Materiali" />
+            <End Role="Rashodi_Materialov" EntitySet="Rashodi_Materialov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages___Id_Kl__44CA3770" Association="Self.FK__Messages___Id_Kl__44CA3770">
+            <End Role="Otzivi" EntitySet="Otzivi" />
+            <End Role="Messages_Akcii" EntitySet="Messages_Akcii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prodaji__Id_Klie__3B40CD36" Association="Self.FK__Prodaji__Id_Klie__3B40CD36">
+            <End Role="Otzivi" EntitySet="Otzivi" />
+            <End Role="Prodaji" EntitySet="Prodaji" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prodaji__Id_Uslu__3C34F16F" Association="Self.FK__Prodaji__Id_Uslu__3C34F16F">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Prodaji" EntitySet="Prodaji" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rashodi_M__Id_Za__42E1EEFE" Association="Self.FK__Rashodi_M__Id_Za__42E1EEFE">
+            <End Role="Zapisi" EntitySet="Zapisi" />
+            <End Role="Rashodi_Materialov" EntitySet="Rashodi_Materialov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vipoln_Us__Id_Us__47A6A41B" Association="Self.FK__Vipoln_Us__Id_Us__47A6A41B">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Vipoln_Usligi" EntitySet="Vipoln_Usligi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zapisi__Id_Uslug__3D2915A8" Association="Self.FK__Zapisi__Id_Uslug__3D2915A8">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Zapisi" EntitySet="Zapisi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище parikmaherModelContainer" CdmEntityContainer="parikmaherEntities">
+          <EntitySetMapping Name="Akcii">
+            <EntityTypeMapping TypeName="parikmaherModel.Akcii">
+              <MappingFragment StoreEntitySet="Akcii">
+                <ScalarProperty Name="Id_Akcii" ColumnName="Id_Akcii" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientPreferences">
+            <EntityTypeMapping TypeName="parikmaherModel.ClientPreferences">
+              <MappingFragment StoreEntitySet="ClientPreferences">
+                <ScalarProperty Name="Id_ClientPreferences" ColumnName="Id_ClientPreferences" />
+                <ScalarProperty Name="Id_Klient" ColumnName="Id_Klient" />
+                <ScalarProperty Name="ClientPreferences1" ColumnName="ClientPreferences" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorii_Uslug">
+            <EntityTypeMapping TypeName="parikmaherModel.Kategorii_Uslug">
+              <MappingFragment StoreEntitySet="Kategorii_Uslug">
+                <ScalarProperty Name="Id_Uslugi" ColumnName="Id_Uslugi" />
+                <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klient">
+            <EntityTypeMapping TypeName="parikmaherModel.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="Id_Klient" ColumnName="Id_Klient" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master">
+            <EntityTypeMapping TypeName="parikmaherModel.Master">
+              <MappingFragment StoreEntitySet="Master">
+                <ScalarProperty Name="Id_Mastera" ColumnName="Id_Mastera" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="SpecNazv" ColumnName="SpecNazv" />
+                <ScalarProperty Name="Reyting" ColumnName="Reyting" />
+                <ScalarProperty Name="Opit" ColumnName="Opit" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="Id_Uslugi" ColumnName="Id_Uslugi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materiali">
+            <EntityTypeMapping TypeName="parikmaherModel.Materiali">
+              <MappingFragment StoreEntitySet="Materiali">
+                <ScalarProperty Name="Id_Materiala" ColumnName="Id_Materiala" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+                <ScalarProperty Name="Id_Uslugi" ColumnName="Id_Uslugi" />
+                <ScalarProperty Name="Srok_godnosti" ColumnName="Srok_godnosti" />
+                <ScalarProperty Name="Id_Uvedi" ColumnName="Id_Uvedi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages_Akcii">
+            <EntityTypeMapping TypeName="parikmaherModel.Messages_Akcii">
+              <MappingFragment StoreEntitySet="Messages_Akcii">
+                <ScalarProperty Name="Id_Messages" ColumnName="Id_Messages" />
+                <ScalarProperty Name="Id_Klienta" ColumnName="Id_Klienta" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Naviki">
+            <EntityTypeMapping TypeName="parikmaherModel.Naviki">
+              <MappingFragment StoreEntitySet="Naviki">
+                <ScalarProperty Name="Id_Navika" ColumnName="Id_Navika" />
+                <ScalarProperty Name="Id_Sotrudnika" ColumnName="Id_Sotrudnika" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otzivi">
+            <EntityTypeMapping TypeName="parikmaherModel.Otzivi">
+              <MappingFragment StoreEntitySet="Otzivi">
+                <ScalarProperty Name="Id_Klienta" ColumnName="Id_Klienta" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prodaji">
+            <EntityTypeMapping TypeName="parikmaherModel.Prodaji">
+              <MappingFragment StoreEntitySet="Prodaji">
+                <ScalarProperty Name="Id_Prodaji" ColumnName="Id_Prodaji" />
+                <ScalarProperty Name="Id_Klienta" ColumnName="Id_Klienta" />
+                <ScalarProperty Name="Id_Uslugi" ColumnName="Id_Uslugi" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rashodi_Materialov">
+            <EntityTypeMapping TypeName="parikmaherModel.Rashodi_Materialov">
+              <MappingFragment StoreEntitySet="Rashodi_Materialov">
+                <ScalarProperty Name="Id_Rashodi_Materialov" ColumnName="Id_Rashodi_Materialov" />
+                <ScalarProperty Name="Id_Zapisi" ColumnName="Id_Zapisi" />
+                <ScalarProperty Name="Id_Materiala" ColumnName="Id_Materiala" />
+                <ScalarProperty Name="Kolvo_Used" ColumnName="Kolvo_Used" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Raspisanie">
+            <EntityTypeMapping TypeName="parikmaherModel.Raspisanie">
+              <MappingFragment StoreEntitySet="Raspisanie">
+                <ScalarProperty Name="Id_Raspisanie" ColumnName="Id_Raspisanie" />
+                <ScalarProperty Name="Id_Mastera" ColumnName="Id_Mastera" />
+                <ScalarProperty Name="Rab_chasi" ColumnName="Rab_chasi" />
+                <ScalarProperty Name="Perev" ColumnName="Perev" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specializacii">
+            <EntityTypeMapping TypeName="parikmaherModel.Specializacii">
+              <MappingFragment StoreEntitySet="Specializacii">
+                <ScalarProperty Name="Id_Specializacii" ColumnName="Id_Specializacii" />
+                <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="parikmaherModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugi">
+            <EntityTypeMapping TypeName="parikmaherModel.Uslugi">
+              <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="Id_Uslugi" ColumnName="Id_Uslugi" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="Kategoriya" ColumnName="Kategoriya" />
+                <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Dlitelnost_chasov" ColumnName="Dlitelnost_chasov" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uvedi">
+            <EntityTypeMapping TypeName="parikmaherModel.Uvedi">
+              <MappingFragment StoreEntitySet="Uvedi">
+                <ScalarProperty Name="Id_Uvedi" ColumnName="Id_Uvedi" />
+                <ScalarProperty Name="Id_Klienta" ColumnName="Id_Klienta" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vipoln_Usligi">
+            <EntityTypeMapping TypeName="parikmaherModel.Vipoln_Usligi">
+              <MappingFragment StoreEntitySet="Vipoln_Usligi">
+                <ScalarProperty Name="Id_Vipoln_Usligi" ColumnName="Id_Vipoln_Usligi" />
+                <ScalarProperty Name="Id_Klient" ColumnName="Id_Klient" />
+                <ScalarProperty Name="Id_Uslugi" ColumnName="Id_Uslugi" />
+                <ScalarProperty Name="Дата_Выполнения" ColumnName="Дата_Выполнения" />
+                <ScalarProperty Name="Сумма" ColumnName="Сумма" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zapisi">
+            <EntityTypeMapping TypeName="parikmaherModel.Zapisi">
+              <MappingFragment StoreEntitySet="Zapisi">
+                <ScalarProperty Name="Id_Zapisi" ColumnName="Id_Zapisi" />
+                <ScalarProperty Name="Id_Sotrudnika" ColumnName="Id_Sotrudnika" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id_Uslugi" ColumnName="Id_Uslugi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zarplati">
+            <EntityTypeMapping TypeName="parikmaherModel.Zarplati">
+              <MappingFragment StoreEntitySet="Zarplati">
+                <ScalarProperty Name="Id_Zarp" ColumnName="Id_Zarp" />
+                <ScalarProperty Name="Id_Sotrudnika" ColumnName="Id_Sotrudnika" />
+                <ScalarProperty Name="Zarplata" ColumnName="Zarplata" />
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+                <ScalarProperty Name="Zarplata_Month" ColumnName="Zarplata_Month" />
+                <ScalarProperty Name="Zarplata_Year" ColumnName="Zarplata_Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
